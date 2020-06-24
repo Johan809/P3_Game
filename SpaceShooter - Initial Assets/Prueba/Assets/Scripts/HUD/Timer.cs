@@ -16,8 +16,8 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        min = (int) (Time.time / 60f);
-        sec = (int) (Time.time % 60f);
+        min = (int)(Time.time / 60f);
+        sec = (int)(Time.time % 60f);
         if (min > 9)
         {
             counter.rectTransform.localPosition = new Vector3(161.71f, counter.rectTransform.localPosition.y, counter.rectTransform.localPosition.z);

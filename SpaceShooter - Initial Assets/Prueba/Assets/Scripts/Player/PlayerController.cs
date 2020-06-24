@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,10 +19,17 @@ public class PlayerController : MonoBehaviour
     private float current_Attack_Timer;
     private bool canAttack;
 
+    public int helium = 100;
+    public Text score;
+
+    private float time = 0.0f;
+    private float period = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
         current_Attack_Timer = attack_Timer;
+        updateHeliumScore();
     }
 
     // Update is called once per frame
@@ -29,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         Attack();
+        remove5HeliumAfter10Secs();
     }
 
     void MovePlayer()
@@ -73,4 +82,20 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    void remove5HeliumAfter10Secs()
+    {
+        time += Time.deltaTime;
+        if (time >= period)
+        {
+            time -= period;
+            helium -= 5;
+            updateHeliumScore();
+        }
+    }
+
+    void updateHeliumScore() => score.text = helium.ToString("000000");
+
+
+
 }//class
