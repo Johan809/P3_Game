@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,9 +27,19 @@ public class PlayerController : MonoBehaviour
     private float time = 0.0f;
     private float period = 10f;
 
+    public Text restartText;
+    private bool restart;
+    public Text gameOverText;
+    private bool gameOver;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        restart = false;
+        restartText.gameObject.SetActive(false);
+        gameOver = false;
+        gameOverText.gameObject.SetActive(false); 
         current_Attack_Timer = attack_Timer;
         updateHeliumScore();
     }
@@ -38,6 +50,10 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         Attack();
         remove5HeliumAfter10Secs();
+        if (restart && Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0); 
+        }
     }
 
     void MovePlayer()
@@ -47,18 +63,21 @@ public class PlayerController : MonoBehaviour
             temp.y += speed * Time.deltaTime;
 
             if (temp.y > max_Y)
-                temp.y = max_Y;
-
+                
+                GameOver();
+            
             transform.position = temp;
         } else if(Input.GetAxisRaw("Vertical") < 0f) {
             Vector3 temp = transform.position;
             temp.y -= speed * Time.deltaTime;
 
             if (temp.y < min_Y)
-                temp.y = min_Y;
-
+                
+                GameOver();
+            
             transform.position = temp;
         }
+
     }
 
     void Attack()
@@ -96,6 +115,16 @@ public class PlayerController : MonoBehaviour
 
     void updateHeliumScore() => score.text = helium.ToString("000000");
 
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+        gameOver = (true);
+        if (gameOver)
+        {
+            restartText.gameObject.SetActive(true);
+            restart = true;
+        }
+    }
 
 
 }//class
