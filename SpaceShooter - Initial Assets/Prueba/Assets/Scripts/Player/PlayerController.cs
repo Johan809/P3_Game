@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         remove5HeliumAfter10Secs();
         if (restart && Input.GetKeyDown(KeyCode.R))
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene(0); 
         }
     }
@@ -121,8 +122,10 @@ public class PlayerController : MonoBehaviour
         gameOver = (true);
         if (gameOver)
         {
+            
             restartText.gameObject.SetActive(true);
             restart = true;
+            Time.timeScale = 0f;
         }
     }
 
