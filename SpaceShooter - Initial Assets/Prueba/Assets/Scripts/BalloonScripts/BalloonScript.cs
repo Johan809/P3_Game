@@ -41,5 +41,27 @@ public class BalloonScript : MonoBehaviour
                 gameObject.SetActive(false);
         }
     }
+    void TurnOffGameObject()
+    {
+        gameObject.SetActive(false);
+    }
+
+    //Si el objeto tiene el tag 'Enemy' y lo impacta una bala este se destruira, 
+    //debe tener el tag y la animacion se debe llamar 'Destroy', 
+    //tambien se le puede agregar el sonido de explosion
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "Bullet")
+        {
+            canMove = false;
+
+            Invoke("TurnOffGameObject", 3f);
+
+            //play explosion sound
+            anim.Play("Destroy");
+        }
+    }
+
+
 
 }
