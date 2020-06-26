@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
@@ -32,7 +31,6 @@ public class PlayerController : MonoBehaviour
     public Text gameOverText;
     private bool gameOver;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,11 +48,19 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         Attack();
         remove5HeliumAfter10Secs();
+        FinishGameWhenHeliumIs0();
         if (restart && Input.GetKeyDown(KeyCode.R))
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene(0); 
+            SceneManager.LoadScene(0);
+            new Timer().ResetTimer();
         }
+
+        //if (Time.time > 10f && t)
+        //{
+        //    t = false;
+        //    GameOver();
+        //}
     }
 
     void MovePlayer()
@@ -122,12 +128,12 @@ public class PlayerController : MonoBehaviour
         gameOver = (true);
         if (gameOver)
         {
-            
             restartText.gameObject.SetActive(true);
             restart = true;
             Time.timeScale = 0f;
         }
     }
 
+    void FinishGameWhenHeliumIs0() { if (helium < 1) GameOver(); }
 
 }//class
