@@ -81,4 +81,31 @@ public class EnemyScript : MonoBehaviour
             Invoke("StartShooting", Random.Range(1f, 3f));
     }
 
+    void TurnOffGameObject()
+    {
+        gameObject.SetActive(false);
+    }
+
+    //Si el objeto tiene el tag 'Enemy' y lo impacta una bala este se destruira, 
+    //debe tener el tag y la animacion se debe llamar 'Destroy', 
+    //tambien se le puede agregar el sonido de explosion
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "Bullet")
+        {
+            canMove = false;
+
+            if (canShoot)
+            {
+                canShoot = false;
+                CancelInvoke("StartShooting");
+            }
+
+            Invoke("TurnOffGameObject", 3f);
+
+            //play explosion sound
+            anim.Play("Destroy");
+        }
+    }
+
 }//class

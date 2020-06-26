@@ -170,6 +170,10 @@ MonoBehaviour:
     type: 3}
   attack_Point: {fileID: 1180910995291983422}
   attack_Timer: 0.35
+  helium: 100
+  score: {fileID: 0}
+  restartText: {fileID: 0}
+  gameOverText: {fileID: 0}
 --- !u!1 &5338288811766866076
 GameObject:
   m_ObjectHideFlags: 0
