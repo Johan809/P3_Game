@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\BG_scroll_script\BGscroll.cs" />
     <Compile Include="Assets\Scripts\Bullets\Bullet.cs" />
     <Compile Include="Assets\Scripts\Enemy Scripts\EnemyScript.cs" />
+    <Compile Include="Assets\Scripts\HUD\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\HUD\Timer.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

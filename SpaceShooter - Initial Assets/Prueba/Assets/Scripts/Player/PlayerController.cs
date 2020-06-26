@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     public Text gameOverText;
     private bool gameOver;
 
-    // Start is called before the first frame update
     void Start()
     {
         restart = false;
@@ -42,25 +41,13 @@ public class PlayerController : MonoBehaviour
         updateHeliumScore();
     }
 
-    // Update is called once per frame
     void Update()
     {
         MovePlayer();
         Attack();
         remove5HeliumAfter10Secs();
         FinishGameWhenHeliumIs0();
-        if (restart && Input.GetKeyDown(KeyCode.R))
-        {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene(0);
-            new Timer().ResetTimer();
-        }
-
-        //if (Time.time > 10f && t)
-        //{
-        //    t = false;
-        //    GameOver();
-        //}
+        if (restart && Input.GetKeyDown(KeyCode.R)) Restart();
     }
 
     void MovePlayer()
@@ -121,6 +108,13 @@ public class PlayerController : MonoBehaviour
     }
 
     void updateHeliumScore() => score.text = helium.ToString("000000");
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+        gameObject.AddComponent<Timer>().ResetTimer();
+    }
 
     public void GameOver()
     {
