@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 5.5f;
     public float deactivate_Timer = 4f;
 
     [HideInInspector]
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
     void Move()
     {
         Vector3 temp = transform.position;
-        temp.x += speed * Time.deltaTime;
+        temp.x -= speed * Time.deltaTime;
         transform.position = temp;
     }
 

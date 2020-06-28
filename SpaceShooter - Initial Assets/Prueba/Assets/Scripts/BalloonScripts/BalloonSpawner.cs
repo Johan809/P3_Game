@@ -5,7 +5,7 @@ using UnityEngine;
 public class BalloonSpawner : MonoBehaviour
 {
 
-    public float min_X = -5.5f, max_X = 9.0f;
+    public float min_X = -6.3f, max_X = 5.5f;
     public GameObject[] balloon_Prefabs;
     
 
