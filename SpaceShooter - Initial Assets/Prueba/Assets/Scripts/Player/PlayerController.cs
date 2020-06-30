@@ -31,8 +31,13 @@ public class PlayerController : MonoBehaviour
     public Text gameOverText;
     private bool gameOver;
 
+    public Text winnerText;
+    private bool winner;
+
     void Start()
     {
+        winner = false;
+        winnerText.gameObject.SetActive(false);
         restart = false;
         restartText.gameObject.SetActive(false);
         gameOver = false;
@@ -47,6 +52,7 @@ public class PlayerController : MonoBehaviour
         Attack();
         remove5HeliumAfter10Secs();
         FinishGameWhenHeliumIs0();
+        WinnerGameWhenHeliumIs500();
         if (restart && Input.GetKeyDown(KeyCode.R)) Restart();
     }
 
@@ -129,5 +135,19 @@ public class PlayerController : MonoBehaviour
     }
 
     void FinishGameWhenHeliumIs0() { if (helium < 1) GameOver(); }
+
+    public void Winner()
+    {
+        winnerText.gameObject.SetActive(true);
+        winner = (true);
+        if (winner)
+        {
+            restartText.gameObject.SetActive(true);
+            restart = true;
+            Time.timeScale = 0f;
+        }
+    }
+
+    void WinnerGameWhenHeliumIs500() { if (helium == 500) Winner(); }
 
 }//class
