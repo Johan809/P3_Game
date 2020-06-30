@@ -562,7 +562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.03}
   m_SizeDelta: {x: 642, y: 274}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410586427
@@ -1141,6 +1141,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054226297}
   m_CullTransparentMesh: 0
+--- !u!1 &1176288135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176288137}
+  - component: {fileID: 1176288136}
+  m_Layer: 0
+  m_Name: BlueSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1176288136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176288135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eff197d5587874f97bae5cfd4e8b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  min_X: -6.3
+  max_X: 5.5
+  BluBalloon: {fileID: 8362852179399377309, guid: 20dee5c47841bdc43a699b5cd5716866,
+    type: 3}
+  timer: 2.5
+--- !u!4 &1176288137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176288135}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: -5.96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1195999290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,7 +1609,7 @@ MonoBehaviour:
   min_X: -6.3
   max_X: 5.5
   balloon_Prefabs:
-  - {fileID: 8362852179399377309, guid: 20dee5c47841bdc43a699b5cd5716866, type: 3}
+  - {fileID: 5016766208562957415, guid: e6d844a6702dada47af869df13a62f84, type: 3}
   - {fileID: 3703657404011015862, guid: 6920e004404b51840a990814c33c1e33, type: 3}
   - {fileID: 5475698285298582249, guid: c3cede4d4b77e5b4a8c2000a1c8a452f, type: 3}
   - {fileID: 348536696720208211, guid: 637138b5e2c4ef045877ed0e94a162f2, type: 3}
@@ -1570,7 +1618,6 @@ MonoBehaviour:
   - {fileID: 6905794915217989775, guid: 7c4fc091386d2664880f742f1854cdc2, type: 3}
   - {fileID: 3175937709825745554, guid: 06229badc9b73b84f83edeeb0fbff01e, type: 3}
   - {fileID: 3528547823750493876, guid: 3efeb8fa48cb3fb44bad9c56a14105ac, type: 3}
-  - {fileID: 5016766208562957415, guid: e6d844a6702dada47af869df13a62f84, type: 3}
   timer: 0.8
 --- !u!4 &1765186246
 Transform:
@@ -1984,7 +2031,7 @@ PrefabInstance:
     - target: {fileID: 7369491400295205916, guid: 566f52320086d1d488670329854713e0,
         type: 3}
       propertyPath: balloon_Prefabs.Array.size
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7369491400295205916, guid: 566f52320086d1d488670329854713e0,
         type: 3}
