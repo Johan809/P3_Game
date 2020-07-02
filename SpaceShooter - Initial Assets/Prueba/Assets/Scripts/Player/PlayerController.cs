@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     public Text winnerText;
     private bool winner;
 
+    private Animator anim;
+    private float waiter = 8f;
+    private AudioSource explosionSound;
+
     void Start()
     {
         winner = false;
@@ -44,6 +48,9 @@ public class PlayerController : MonoBehaviour
         gameOverText.gameObject.SetActive(false); 
         current_Attack_Timer = attack_Timer;
         updateHeliumScore();
+
+        anim = GetComponent<Animator>();
+        explosionSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -128,9 +135,20 @@ public class PlayerController : MonoBehaviour
         gameOver = (true);
         if (gameOver)
         {
-            restartText.gameObject.SetActive(true);
-            restart = true;
-            Time.timeScale = 0f;
+            //play explosion sound
+            anim.Play("Destroy");
+
+            for(int i=0; i<waiter; i++)
+            {
+                waiter -= 0.5f;
+            }
+            if (waiter <= 0)
+            {
+                restartText.gameObject.SetActive(true);
+                restart = true;
+                Time.timeScale = 0f;
+            }
+            
         }
     }
 
