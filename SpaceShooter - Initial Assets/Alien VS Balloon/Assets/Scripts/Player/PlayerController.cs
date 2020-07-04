@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.PlayerLoop;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,8 +21,9 @@ public class PlayerController : MonoBehaviour
     private float current_Attack_Timer;
     private bool canAttack;
 
-    public int helium = 100;
-    public Text score;
+    static int helium = 30;
+    public Text _scoreText;
+    static Text score;
 
     private float time = 0.0f;
     private float period = 10f;
@@ -38,6 +40,11 @@ public class PlayerController : MonoBehaviour
     private float waiter = 8f;
     private AudioSource explosionSound;
 
+    private void Awake()
+    {
+        score = _scoreText;
+    }
+
     void Start()
     {
         winner = false;
@@ -47,7 +54,7 @@ public class PlayerController : MonoBehaviour
         gameOver = false;
         gameOverText.gameObject.SetActive(false); 
         current_Attack_Timer = attack_Timer;
-        updateHeliumScore();
+        UpdateHeliumScore();
 
         anim = GetComponent<Animator>();
         explosionSound = GetComponent<AudioSource>();
@@ -57,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         Attack();
-        remove5HeliumAfter10Secs();
+        Remove5HeliumAfter10Secs();
         FinishGameWhenHeliumIs0();
         WinnerGameWhenHeliumIs500();
         if (restart && Input.GetKeyDown(KeyCode.R)) Restart();
@@ -109,18 +116,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void remove5HeliumAfter10Secs()
+    void Remove5HeliumAfter10Secs()
     {
         time += Time.deltaTime;
         if (time >= period)
         {
             time -= period;
             helium -= 5;
-            updateHeliumScore();
+            UpdateHeliumScore();
         }
     }
 
-    void updateHeliumScore() => score.text = helium.ToString("000000");
+    static void UpdateHeliumScore() => 
+        score.text = helium.ToString("000000");
 
     public void Restart()
     {
@@ -167,5 +175,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void WinnerGameWhenHeliumIs500() { if (helium == 500) Winner(); }
+
+    public static void IncreaseHelium(bool IsBlue)
+    {
+        if (IsBlue) helium += 10;
+        else helium += 1;
+        UpdateHeliumScore();
+    }
 
 }//class

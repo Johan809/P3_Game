@@ -11,7 +11,6 @@ public class BalloonScript : MonoBehaviour
     private Animator anim;
     private AudioSource explosionSound;
 
-    // Start is called before the first frame update
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -23,7 +22,6 @@ public class BalloonScript : MonoBehaviour
         Move();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -33,7 +31,7 @@ public class BalloonScript : MonoBehaviour
     {
         if (canMove)
         {
-            speed = getBalloonSpeed();
+            speed = GetBalloonSpeed();
             Vector3 temp = transform.position;
             temp.y += speed * Time.deltaTime;
             transform.position = temp;
@@ -42,6 +40,7 @@ public class BalloonScript : MonoBehaviour
                 gameObject.SetActive(false);
         }
     }
+
     void TurnOffGameObject()
     {
         gameObject.SetActive(false);
@@ -56,15 +55,17 @@ public class BalloonScript : MonoBehaviour
         {
             canMove = false;
 
-            Invoke("TurnOffGameObject", 0.1f);
+            PlayerController.IncreaseHelium(IsBalloonBlue(gameObject.name));
 
             //play explosion sound
             anim.Play("Destroy");
-            
+            Invoke("TurnOffGameObject", 0.1f);
         }
     }
 
-    float getBalloonSpeed() => gameObject.name == "globo(Clone)" //Si el globo es azul
+    bool IsBalloonBlue(string balloonName) => balloonName == "globo(Clone)";
+
+    float GetBalloonSpeed() => IsBalloonBlue(gameObject.name) //Si el globo es azul
         ? Random.Range(6.5f, 7.5f)
         : Random.Range(3f, 6f);
 

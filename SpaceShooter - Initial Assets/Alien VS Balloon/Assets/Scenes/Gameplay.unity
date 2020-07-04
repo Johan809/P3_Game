@@ -1283,7 +1283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1201015668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1343,6 +1343,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201015667}
   m_CullTransparentMesh: 0
+--- !u!4 &1220078533 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1180910995291983422, guid: f756a4348e2251947b69e7cf896bf45f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4419615074908667326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1423294178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,6 +2033,27 @@ PrefabInstance:
       propertyPath: winnerText
       value: 
       objectReference: {fileID: 1201015669}
+    - target: {fileID: 7199323963192312624, guid: f756a4348e2251947b69e7cf896bf45f,
+        type: 3}
+      propertyPath: player_Bullet
+      value: 
+      objectReference: {fileID: 8741219848818387515, guid: 160f35e8b0214bc448e234a1618dc7ad,
+        type: 3}
+    - target: {fileID: 7199323963192312624, guid: f756a4348e2251947b69e7cf896bf45f,
+        type: 3}
+      propertyPath: attack_Point
+      value: 
+      objectReference: {fileID: 1220078533}
+    - target: {fileID: 7199323963192312624, guid: f756a4348e2251947b69e7cf896bf45f,
+        type: 3}
+      propertyPath: scoreInsVar
+      value: 
+      objectReference: {fileID: 358310655}
+    - target: {fileID: 7199323963192312624, guid: f756a4348e2251947b69e7cf896bf45f,
+        type: 3}
+      propertyPath: _scoreText
+      value: 
+      objectReference: {fileID: 358310655}
     - target: {fileID: 4419615076598134629, guid: f756a4348e2251947b69e7cf896bf45f,
         type: 3}
       propertyPath: m_LocalPosition.x
