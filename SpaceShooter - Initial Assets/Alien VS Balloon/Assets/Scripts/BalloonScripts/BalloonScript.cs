@@ -56,10 +56,11 @@ public class BalloonScript : MonoBehaviour
         {
             canMove = false;
 
-            Invoke("TurnOffGameObject", 3f);
+            Invoke("TurnOffGameObject", 0.1f);
 
             //play explosion sound
             anim.Play("Destroy");
+            
         }
     }
 
