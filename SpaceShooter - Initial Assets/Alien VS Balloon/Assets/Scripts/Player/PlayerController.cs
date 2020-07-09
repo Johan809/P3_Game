@@ -179,8 +179,7 @@ public class PlayerController : MonoBehaviour
 
     public static void IncreaseHelium(bool IsBlue)
     {
-        if (IsBlue) helium += 10;
-        else helium += 1;
+        helium += (IsBlue ? 10 : 1);
         UpdateHeliumScore();
     }
 
