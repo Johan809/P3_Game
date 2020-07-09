@@ -6,9 +6,15 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private Text counter;
+    static Text counter;
+    public Text _counter;
     private static float startTime = 0;
     private float min, sec;
+
+    private void Awake()
+    {
+        counter = _counter;
+    }
 
     void Start()
     {
